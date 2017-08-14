@@ -1,1 +1,77 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
+body{
+  background-color: #FFC107;
+
+  .main-container {
+    width: 1400px;
+    height: 900px;  
+    background: #fff;
+    border-radius: 2px;
+    display: inline-block;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    .mat-sidenav{
+      background-color: #673AB7;
+
+    }
+
+    .sidenav-content {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden !important;
+
+      agm-map, ng-map {
+        border-radius: 2px;
+        height: 900px;
+        width: 100%;
+      }
+
+      .sidenav-opener{
+        position:absolute; 
+        z-index:1;
+        bottom: 30px;
+        right: 30px;
+        background-color: #FF6F00 !important;
+
+        .material-icons.purple{
+          color: #311B92;
+
+        }
+      }
+    }
+
+    .sidenav {
+      padding: 20px;
+      width: 35%;
+    }
+
+  }
+
+
+}
+
+
+.example-card {
+  width: 400px;
+}
+
+.example-header-image {
+  background-image: url('assets/run.jpg');
+  background-size: cover;
+}
+
+
+
