@@ -5,6 +5,8 @@ import {MdButtonModule, MdCheckboxModule} from '@angular/material';
 import {MdGridListModule} from '@angular/material';
 import {MdCardModule} from '@angular/material';
 import {MdSidenavModule} from '@angular/material';
+import {MdListModule} from '@angular/material';
+
 
 
 
@@ -13,7 +15,7 @@ import {MdSidenavModule} from '@angular/material';
 
 
 @NgModule({
-  imports: [MdButtonModule, MdCheckboxModule, MdGridListModule, MdCardModule, MdSidenavModule],
-  exports: [MdButtonModule, MdCheckboxModule, MdGridListModule, MdCardModule, MdSidenavModule],
+  imports: [MdButtonModule, MdCheckboxModule, MdGridListModule, MdCardModule, MdSidenavModule,MdListModule ],
+  exports: [MdButtonModule, MdCheckboxModule, MdGridListModule, MdCardModule, MdSidenavModule, MdListModule],
 })
 export class MaterialModule { }

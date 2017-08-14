@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { HttpClient } from "@angular/common/http";
 import { MarkerService } from "./services/marker.service";
+declare var swal: any;
+
 
 @Component({
   selector: 'ng-map',
@@ -22,10 +24,6 @@ export class MapComponent {
     this.markers = this.markerService.getMarkers();
   }
 
-  clickedMarker(marker:marker, index:number){
-
-  }
-
   clickedMap($event:any){
     this.http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + $event.coords.lat + ',' + $event.coords.lng + '&key=AIzaSyDWeAbxruiQufjUBpO34QiMtP6Ui_1F9DQ').subscribe(data => {
       this.results = data['results'][0]['formatted_address'];
@@ -36,7 +34,6 @@ export class MapComponent {
         lng: parseFloat($event.coords.lng)
       }
 
-      console.log(this.markers)
 
       this.markers.push(newMarker)
       this.markerService.addMarker(newMarker);
@@ -47,13 +44,23 @@ export class MapComponent {
   finalMarkerPosition(marker:any, $event:any){
     var actualizedMarker = {
       name: marker.name,
-      lat: parseFloat($event.coords.lat),
-      lng: parseFloat($event.coords.lng)
+      lat: parseFloat(marker.lat),
+      lng: parseFloat(marker.lng)
     }
     
     var newLat =  parseFloat($event.coords.lat);
     var newLng = parseFloat($event.coords.lng);
 
+    this.markerService.updateMarker(actualizedMarker, newLat, newLng);
+  }
+
+  deleteMarker(marker){
+    for(var i = 0; i < this.markers.length; i++){
+      if (marker.lat == this.markers[i].lat && marker.lng == this.markers[i].lng) {
+        this.markers.splice(i, 1);
+      }      
+    }
+    this.markerService.deleteMarker(marker);
   }
 }
 
